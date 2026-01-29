@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Vikash Choudhary - Chemical Engineering Student</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00f6ff",
+              "background-dark": "#010409",
+              "card-dark": "rgba(13, 17, 23, 0.5)",
+              "border-dark": "rgba(255, 255, 255, 0.1)",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "0.75rem",
+              xl: "1rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      .background-glow {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+      }
+      .background-glow::before {
+        content: "";
+        position: absolute;
+        top: -300px;
+        left: -300px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 246, 255, 0.1),
+          transparent 70%
+        );
+        filter: blur(100px);
+        animation: glow-move 15s infinite alternate;
+      }
+      @keyframes glow-move {
+        from {
+          transform: translate(0, 0);
+        }
+        to {
+          transform: translate(100vw, 100vh);
+        }
+      }
+      .profile-shadow {
+        box-shadow: 0 0 15px 5px rgba(0, 246, 255, 0.15),
+          0 0 40px 15px rgba(0, 246, 255, 0.1),
+          0 0 80px 40px rgba(0, 246, 255, 0.05);
+      }
+      .mobile-menu {
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      .mobile-menu.active {
+        transform: translateX(0);
+      }
+    </style>
+  </head>
+  <body class="bg-background-dark font-display text-white">
+    <div class="relative flex min-h-screen w-full flex-col">
+      <div class="background-glow"></div>
+      <header
+        class="sticky top-4 z-50 mx-auto w-[95%] max-w-5xl rounded-full border border-border-dark bg-black/30 px-6 py-3 backdrop-blur-lg"
+      >
+        <div class="flex items-center justify-between">
+          <a class="flex items-center gap-3" href="#">
+            <div class="size-10 text-primary">
+              <img
+                src="https://media.collegedekho.com/media/img/institute/logo/NIT_Durgapur_logo.png"
+                alt="NIT Durgapur Logo"
+              />
+            </div>
+            <h2
+              class="text-lg font-bold leading-tight tracking-[-0.015em] text-white"
+            >
+              Vikash Choudhary
+            </h2>
+          </a>
+          <nav class="hidden items-center gap-8 md:flex">
+            <a
+              class="text-sm font-medium text-white/80 transition-colors hover:text-white"
+              href="#bio"
+              >Bio</a
+            >
+            <a
+              class="text-sm font-medium text-white/80 transition-colors hover:text-white"
+              href="#projects"
+              >Projects</a
+            >
+            <a
+              class="text-sm font-medium text-white/80 transition-colors hover:text-white"
+              href="#achievements"
+              >Achievements</a
+            >
+          </nav>
+          <div class="hidden items-center gap-3 md:flex">
+            <a
+              class="flex h-10 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary px-4 text-sm font-bold leading-normal tracking-[0.015em] text-black transition-transform hover:scale-105"
+              href="https://drive.google.com/file/d/1T64SBVL2auR1vWLyv9F-MXWLRmlR_elq/view?usp=drive_link" target="_blank"
+            >
+              <span class="truncate">Download CV</span>
+            </a>
+          </div>
+
+          <!-- Hamburger Button -->
+          <button
+            id="hamburger"
+            class="flex md:hidden flex-col gap-1.5 p-2 z-50"
+            aria-label="Toggle menu"
+          >
+            <span
+              class="block h-0.5 w-6 bg-white transition-all duration-300"
+            ></span>
+            <span
+              class="block h-0.5 w-6 bg-white transition-all duration-300"
+            ></span>
+            <span
+              class="block h-0.5 w-6 bg-white transition-all duration-300"
+            ></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Mobile Menu -->
+      <div
+        id="mobileMenu"
+        class="mobile-menu fixed top-0 right-0 h-full w-64 bg-black/95 backdrop-blur-lg border-l border-border-dark z-40 md:hidden"
+      >
+        <nav class="flex flex-col gap-6 p-8 pt-24">
+          <a
+            class="text-lg font-medium text-white/80 transition-colors hover:text-primary mobile-menu-link"
+            href="#bio"
+            >Bio</a
+          >
+          <a
+            class="text-lg font-medium text-white/80 transition-colors hover:text-primary mobile-menu-link"
+            href="#projects"
+            >Projects</a
+          >
+          <a
+            class="text-lg font-medium text-white/80 transition-colors hover:text-primary mobile-menu-link"
+            href="#achievements"
+            >Achievements</a
+          >
+          <a
+            class="flex h-12 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary px-4 text-base font-bold leading-normal tracking-[0.015em] text-black transition-transform hover:scale-105 mobile-menu-link"
+            href="#"
+          >
+            <span class="truncate">Download CV</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div
+        id="menuOverlay"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 hidden md:hidden"
+      ></div>
+
+      <main class="flex flex-1 justify-center">
+        <div class="flex w-full max-w-5xl flex-col px-4 py-5 sm:px-8">
+          <section class="@container py-10 md:py-16">
+            <div
+              class="flex flex-col-reverse items-center gap-12 @[864px]:flex-row @[864px]:gap-16"
+            >
+              <div
+                class="flex flex-col gap-8 text-center @[864px]:flex-1 @[864px]:text-left"
+              >
+                <div class="flex flex-col gap-3">
+                  <h1
+                    class="text-4xl font-black leading-tight tracking-[-0.033em] text-white sm:text-5xl md:text-6xl"
+                  >
+                    Vikash Choudhary
+                  </h1>
+                  <h2
+                    class="text-base font-normal leading-normal text-white/80 sm:text-lg"
+                  >
+                    A third-year Chemical Engineering student at NIT Durgapur
+                    with a strong interest in sustainable energy, process
+                    design, and optimization.
+                  </h2>
+                </div>
+                <div
+                  class="flex flex-col items-center gap-6 @[864px]:items-start"
+                >
+                  <div
+                    class="flex flex-wrap items-center justify-center gap-3 @[864px]:justify-start"
+                  >
+                    <a
+                      class="flex h-12 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full bg-primary px-5 text-base font-bold leading-normal tracking-[0.015em] text-black transition-transform hover:scale-105"
+                      href="https://drive.google.com/file/d/1T64SBVL2auR1vWLyv9F-MXWLRmlR_elq/view?usp=drive_link" target="_blank"
+                    >
+                      <span class="truncate">Download CV</span>
+                    </a>
+                    <a
+                      class="flex h-12 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full border border-border-dark bg-white/5 px-5 text-base font-bold leading-normal tracking-[0.015em] text-white transition-colors hover:bg-white/10"
+                      href="#contact"
+                    >
+                      <span class="truncate">Get in Touch</span>
+                    </a>
+                  </div>
+                  <div class="flex items-center gap-4">
+                    <p class="text-sm text-white/60">Connect with me:</p>
+                    <div class="flex gap-2">
+                      <a
+                        class="flex h-8 w-8 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+                        href="https://www.linkedin.com/in/vikashchoudhary-32759828a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BX%2BcxR38kRquZdvFLCF40gw%3D%3D" target="_blank"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="h-4 w-4"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M16.338 16.338H13.67V12.16c0-1.04-.02-2.379-1.452-2.379-1.452 0-1.676 1.136-1.676 2.305v4.252H7.876V8.988h2.645v1.21h.037c.368-.698 1.264-1.426 2.608-1.426 2.793 0 3.31 1.839 3.31 4.23V16.338zM5.337 7.771a1.21 1.21 0 100 2.422 1.21 1.21 0 000-2.422zM6.64 8.988H4.032V16.338H6.64V8.988zM18 1H6a5 5 0 00-5 5v12a5 5 0 005 5h12a5 5 0 005-5V6a5 5 0 00-5-5z"
+                            fill-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </a>
+                      <a
+                        class="flex h-8 w-8 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+                        href="https://github.com/Vikashchou-dhary" target="_blank"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          class="h-5 w-5"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            clip-rule="evenodd"
+                            d="M12 2C6.477 2 2 6.477 2 12c0 4.286 2.865 7.92 6.735 9.164.49.09.665-.213.665-.473 0-.233-.008-.847-.013-1.666-2.782.604-3.37-1.34-3.37-1.34-.446-1.132-1.09-1.434-1.09-1.434-.89-.608.068-.596.068-.596 1 .07 1.522 1.028 1.522 1.028.888 1.52 2.338 1.08 2.91.826.09-.642.348-1.08.636-1.33-2.22-.252-4.555-1.114-4.555-4.942 0-1.09.39-1.984 1.03-2.682-.104-.254-.448-1.27.096-2.646 0 0 .84-.268 2.75 1.022.798-.222 1.654-.334 2.504-.338.85.004 1.706.116 2.504.338 1.91-1.29 2.75-1.022 2.75-1.022.546 1.376.202 2.392.1 2.646.64.698 1.026 1.592 1.026 2.682 0 3.84-2.338 4.686-4.566 4.932.358.308.678.92.678 1.852 0 1.336-.012 2.414-.012 2.742 0 .26.174.566.67.472A10.003 10.003 0 0022 12c0-5.523-4.477-10-10-10z"
+                            fill-rule="evenodd"
+                          ></path>
+                        </svg>
+                      </a>
+                      <a
+                        class="flex h-8 w-8 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+                        href="mailto:vc.23ch1005@mitdgp.ac.in"
+                      >
+                        <span class="material-symbols-outlined text-xl"
+                          >mail</span
+                        >
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="relative w-full max-w-xs shrink-0 rounded-full @[864px]:max-w-sm"
+              >
+                <div
+                  class="profile-shadow w-full rounded-full bg-center bg-no-repeat aspect-square bg-cover"
+                  data-alt="professional headshot of Vikash Choudhury"
+                  style="
+                    background-image: url('pic/vikas_pic.jpeg');
+                  "
+                ></div>
+              </div>
+            </div>
+          </section>
+          <section class="py-10 md:py-16" id="bio">
+            <h2
+              class="mb-5 text-[22px] font-bold leading-tight tracking-[-0.015em] text-white"
+            >
+              About Me
+            </h2>
+            <p class="mb-6 text-base font-normal leading-relaxed text-white/80">
+              I am a third-year Chemical Engineering student at NIT Durgapur
+              with a strong interest in sustainable energy through advanced materials synthesis and characterization
+              , process design, and optimization. I'm passionate about tackling complex engineering
+              challenges, whether it involves mass and energy balances, fluid
+              dynamics, or thermodynamic analysis. I have hands-on experience
+              with tools like Aspen plus, ANSYS Fluent, MATLAB and Excel. I have also
+              worked on advanced materials synthesis and characterization like metal-organic frameworks (MOFs)
+              for drug delivery applications under Prof. Ashok M. Raichur IISc
+              bangalore.
+            </p>
+            <div
+              class="grid grid-cols-1 gap-x-6 rounded-lg border border-border-dark bg-card-dark p-6 md:grid-cols-[25%_1fr]"
+            >
+              <div
+                class="col-span-1 grid grid-cols-subgrid border-border-dark py-5 md:col-span-2 md:border-b"
+              >
+                <p class="text-sm font-medium leading-normal text-primary/80">
+                  Research Interests
+                </p>
+                <p class="text-sm font-normal leading-normal text-white/90">
+                  Hydrogen production and storage, Carbon capture, storage and
+                  utilization (CCUS), Sustainable energy technologies.
+                </p>
+              </div>
+              <div
+                class="col-span-1 grid grid-cols-subgrid border-border-dark py-5 md:col-span-2 md:border-b"
+              >
+                <p class="text-sm font-medium leading-normal text-primary/80">
+                  Education
+                </p>
+                <p class="text-sm font-normal leading-normal text-white/90">
+                  Dual Degree B-Tech + M-Tech in Chemical Engineering
+                  (2023-2028), NIT Durgapur.
+                </p>
+              </div>
+              <div class="col-span-1 grid grid-cols-subgrid py-5 md:col-span-2">
+                <p class="text-sm font-medium leading-normal text-primary/80">
+                  Work Experience
+                </p>
+                <p class="text-sm font-normal leading-normal text-white/90">
+                  Research Internship at IISc Bangalore (May'25-July'25) under the guidance of Prof. Ashok M. Raichur.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="py-10 md:py-16" id="projects">
+            <h2
+              class="mb-5 text-[22px] font-bold leading-tight tracking-[-0.015em] text-white"
+            >
+              Projects
+            </h2>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <div
+                class="group relative flex flex-col gap-4 overflow-hidden rounded-lg border border-border-dark bg-card-dark p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10"
+              >
+                <div class="aspect-video w-full overflow-hidden rounded-md">
+                  <div
+                    class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+                    style="
+                      background-image: url('https://www.frontiersin.org/_rtmag/_next/image?url=https%3A%2F%2Fwww.frontiersin.org%2Fimage%2Fresearchtopic%2F15637&w=3840&q=90');
+                    "
+                  ></div>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <h3 class="text-lg font-bold text-primary">
+                    Synthesis and Characterization of Nanoparticles for Drug Delivery for Cancer Therapy.
+                  </h3>
+                  <p class="text-sm font-normal leading-normal text-white/80">
+                    Synthesized and characterized CuO, SA, and hybrid Cu-SA
+                    nanoparticles for drug delivery. Investigated drug-loading
+                    efficiency using ferrocene, achieving up to 80.66%
+                    encapsulation in CuO nanoparticles.
+                  </p>
+                  <p>Keywords: Nanoparticles synthesis and Materials testing instruments</p>
+                </div>
+              </div>
+              <div
+                class="group relative flex flex-col gap-4 overflow-hidden rounded-lg border border-border-dark bg-card-dark p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10"
+              >
+                <div class="aspect-video w-full overflow-hidden rounded-md">
+                  <div
+                    class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+                    style="
+                      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6IW8T32qsDqJUIFUyboez5Rod1pRYmvdxGMKVsvBzR9e4NdBM05HeAQseusR42W-DwU4&usqp=CAU');
+                    "
+                  ></div>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <h3 class="text-lg font-bold text-primary">
+                    FSI- Blood Flow simulation in Clogged artery
+                  </h3>
+                  <p class="text-sm font-normal leading-normal text-white/80">
+                    Simulated blood flow in clogged arteries to evaluate
+                    velocity, pressure, and shear stress. Applied
+                    Fluid-Structure Interaction (FSI) to analyze arterial wall
+                    deformation under constricted flow conditions.
+                  </p>
+                </div>
+              </div>
+                    <div
+                class="group relative flex flex-col gap-4 overflow-hidden rounded-lg border border-border-dark bg-card-dark p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10"
+              >
+                <div class="aspect-video w-full overflow-hidden rounded-md">
+                  <div
+                    class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-105"
+                    style="
+                      background-image: url('Methanol_Synthesis_from_Syngas/flowsheet_new.png');
+                    "
+                  ></div>
+                </div>
+                <div class="flex flex-col gap-2">
+                  <h3 class="text-lg font-bold text-primary">
+                    Process Modelling of Synthesis of Methanol from Syngas
+                  </h3>
+                  <p class="text-sm font-normal leading-normal text-white/80">
+                    Synthesized and characterized CuO, SA, and hybrid Cu-SA
+                    nanoparticles for drug delivery. Investigated drug-loading
+                    efficiency using ferrocene, achieving up to 80.66%
+                    encapsulation in CuO nanoparticles.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="py-10 md:py-16" id="achievements">
+            <h2
+              class="mb-5 text-[22px] font-bold leading-tight tracking-[-0.015em] text-white"
+            >
+              Achievements &amp; Leadership
+            </h2>
+            <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+              <div
+                class="group flex flex-col gap-4 rounded-lg border border-border-dark bg-card-dark p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+              >
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-2xl text-primary"
+                    >school</span
+                  >
+                  <h3 class="font-bold text-white">Academic Achievements</h3>
+                </div>
+                <ul
+                  class="flex list-disc flex-col gap-2 pl-5 text-sm text-white/80"
+                >
+                  <li>
+                    Awarded the prestigious Summer Research Fellowship (SRFP
+                    2025) by the Indian Academy of Sciences.
+                  </li>
+                  <li>
+                    Awarded Minor in Electronics and Communication Engineering
+                    offer to top 150 students.
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="group flex flex-col gap-4 rounded-lg border border-border-dark bg-card-dark p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+              >
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-2xl text-primary"
+                    >workspace_premium</span
+                  >
+                  <h3 class="font-bold text-white">Certifications</h3>
+                </div>
+                <ul
+                  class="flex list-disc flex-col gap-2 pl-5 text-sm text-white/80"
+                >
+                  <li>Mastering Introduction to Drilling - LearnToDrill</li>
+                  <li>Finding the Leader in you (FLY) Program - CMI</li>
+                  <li>
+                    Aspen HYSYS Simulation, Industrial Distillation, P&amp;ID
+                    Mastery - UDEMY
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="group flex flex-col gap-4 rounded-lg border border-border-dark bg-card-dark p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10"
+              >
+                <div class="flex items-center gap-3">
+                  <span class="material-symbols-outlined text-2xl text-primary"
+                    >groups</span
+                  >
+                  <h3 class="font-bold text-white">Positions of Leadership</h3>
+                </div>
+                <ul
+                  class="flex list-disc flex-col gap-2 pl-5 text-sm text-white/80"
+                >
+                  <li>
+                    Senior Coordinator, SPIC MACAY NIT DURGAPUR (Feb'24–
+                    Present)
+                  </li>
+                  <li>Scholarship Executive-Impactis (Nov'24)</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <footer
+            class="mt-10 border-t border-solid border-border-dark pt-8 pb-10 text-center md:mt-16"
+            id="contact"
+          >
+            <div class="flex flex-col items-center gap-4">
+              <h3 class="text-lg font-bold text-white">Get in Touch</h3>
+              <p class="max-w-md text-sm text-white/70">
+                I'm always open to discussing new projects, research
+                opportunities, or just to chat. Feel free to reach out.
+              </p>
+              <a
+                class="font-medium text-primary transition-colors hover:text-primary/80"
+                href="mailto:vc.23ch1005@nitdgp.ac.in"
+                >Vikash Choudhary</a
+              >
+              <div class="flex gap-4 pt-2">
+                <a
+                  class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+                  href="https://www.linkedin.com/in/vikashchoudhary-32759828a?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BX%2BcxR38kRquZdvFLCF40gw%3D%3D" target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-5 w-5"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M16.338 16.338H13.67V12.16c0-1.04-.02-2.379-1.452-2.379-1.452 0-1.676 1.136-1.676 2.305v4.252H7.876V8.988h2.645v1.21h.037c.368-.698 1.264-1.426 2.608-1.426 2.793 0 3.31 1.839 3.31 4.23V16.338zM5.337 7.771a1.21 1.21 0 100 2.422 1.21 1.21 0 000-2.422zM6.64 8.988H4.032V16.338H6.64V8.988zM18 1H6a5 5 0 00-5 5v12a5 5 0 005 5h12a5 5 0 005-5V6a5 5 0 00-5-5z"
+                      fill-rule="evenodd"
+                    ></path>
+                  </svg>
+                </a>
+                <a
+                  class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-white/10 text-white transition-colors hover:bg-white/20"
+                  href="https://github.com/Vikashchou-dhary" target="_blank"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="h-6 w-6"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      clip-rule="evenodd"
+                      d="M12 2C6.477 2 2 6.477 2 12c0 4.286 2.865 7.92 6.735 9.164.49.09.665-.213.665-.473 0-.233-.008-.847-.013-1.666-2.782.604-3.37-1.34-3.37-1.34-.446-1.132-1.09-1.434-1.09-1.434-.89-.608.068-.596.068-.596 1 .07 1.522 1.028 1.522 1.028.888 1.52 2.338 1.08 2.91.826.09-.642.348-1.08.636-1.33-2.22-.252-4.555-1.114-4.555-4.942 0-1.09.39-1.984 1.03-2.682-.104-.254-.448-1.27.096-2.646 0 0 .84-.268 2.75 1.022.798-.222 1.654-.334 2.504-.338.85.004 1.706.116 2.504.338 1.91-1.29 2.75-1.022 2.75-1.022.546 1.376.202 2.392.1 2.646.64.698 1.026 1.592 1.026 2.682 0 3.84-2.338 4.686-4.566 4.932.358.308.678.92.678 1.852 0 1.336-.012 2.414-.012 2.742 0 .26.174.566.67.472A10.003 10.003 0 0022 12c0-5.523-4.477-10-10-10z"
+                      fill-rule="evenodd"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+              <p class="pt-4 text-xs text-white/50">
+                © 2024 Vikash Choudhury All rights reserved.
+              </p>
+            </div>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuOverlay = document.getElementById("menuOverlay");
+      const menuLinks = document.querySelectorAll(".mobile-menu-link");
+
+      function toggleMenu() {
+        mobileMenu.classList.toggle("active");
+        menuOverlay.classList.toggle("hidden");
+        document.body.style.overflow = mobileMenu.classList.contains("active")
+          ? "hidden"
+          : "";
+
+        // Animate hamburger to X
+        const spans = hamburger.querySelectorAll("span");
+        if (mobileMenu.classList.contains("active")) {
+          spans[0].style.transform = "rotate(45deg) translateY(8px)";
+          spans[1].style.opacity = "0";
+          spans[2].style.transform = "rotate(-45deg) translateY(-8px)";
+        } else {
+          spans[0].style.transform = "none";
+          spans[1].style.opacity = "1";
+          spans[2].style.transform = "none";
+        }
+      }
+
+      hamburger.addEventListener("click", toggleMenu);
+      menuOverlay.addEventListener("click", toggleMenu);
+
+      // Close menu when clicking on links
+      menuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          setTimeout(toggleMenu, 100);
+        });
+      });
+    </script>
+  </body>
+</html>
